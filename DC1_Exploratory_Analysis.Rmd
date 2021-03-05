@@ -1,0 +1,8 @@
+---
+title: "DC1_Exploratory"
+author: "Esa Schenck"
+date: "3/5/2021"
+output: html_document
+---
+
+for exploratory data analysis
