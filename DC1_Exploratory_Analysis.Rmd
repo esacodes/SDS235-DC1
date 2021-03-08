@@ -35,3 +35,11 @@ articles <- read_csv("articlesTextDate.csv")
 View(articles)
 
 filter(articles, grepl('Switzerland',text))
+
+filter(articles, grepl('Swiss',text))
+
+filter(articles, grepl("2002",date))
+
+filter(articles, grepl("VonRyker",text))
+
+filter(articles, grepl("Delwin",text))
