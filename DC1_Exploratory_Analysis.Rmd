@@ -47,6 +47,7 @@ filter(articles, grepl("Delwin",text))
 ----------------------------------------------------
 # Voter Registry Data
 
+# Read Voter Registry
 VoterRegistry <- read_xls("VoterRegistry.xls", col_names = TRUE)
 VoterRegistryDF <- data.frame(VoterRegistry)
 
@@ -56,10 +57,10 @@ VoterRegistryDF <- data.frame(VoterRegistry)
 # Delete first column
 VoterRegistryDF <- VoterRegistryDF[,-1]
 
-# Making all first names uppercase
+# Make all first names uppercase
 VoterRegistryDF$FIRST.NAME <- toupper(VoterRegistryDF$FIRST.NAME)
 
-# Making all POB uppercase
+# Make all POB uppercase
 VoterRegistryDF$POB <- toupper(VoterRegistryDF$POB)
 head(VoterRegistryDF)
 
