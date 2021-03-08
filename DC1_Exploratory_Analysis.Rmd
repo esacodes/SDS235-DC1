@@ -47,7 +47,6 @@ filter(articles, grepl("Delwin",text))
 ----------------------------------------------------
 # Voter Registry Data
 
-# Read Voter Registry
 VoterRegistry <- read_xls("VoterRegistry.xls", col_names = TRUE)
 VoterRegistryDF <- data.frame(VoterRegistry)
 
@@ -57,10 +56,10 @@ VoterRegistryDF <- data.frame(VoterRegistry)
 # Delete first column
 VoterRegistryDF <- VoterRegistryDF[,-1]
 
-# Make all first names uppercase
+# Making all first names uppercase
 VoterRegistryDF$FIRST.NAME <- toupper(VoterRegistryDF$FIRST.NAME)
 
-# Make all POB uppercase
+# Making all POB uppercase
 VoterRegistryDF$POB <- toupper(VoterRegistryDF$POB)
 head(VoterRegistryDF)
 
@@ -89,3 +88,31 @@ typeof(VoterRegistryDF$DOB)
 
 typeof(VoterRegistryDF$DOB)
 head(VoterRegistryDF, n=8)
+
+
+
+------------------------- Nage ------ News analysis
+
+```{r}
+fullTextdf <- readr::read_csv("fullTextdf.csv")
+fullTextdf <- fullTextdf %>%
+  mutate(strings.cleaned = gsub("[-.)(+]|[a-zA-Z]*:?","", text),
+         date = strapplyc(strings.cleaned, "\\d+/\\d+/\\d+", simplify = TRUE))
+
+fullTextdf <- fullTextdf %>%
+  mutate(number = ex_number(strings.cleaned))
+```
+
+# Filter out news articles
+```{r cow related news}
+cow_news <- fullTextdf %>%
+  filter(str_detect(text,"bovine"))
+
+investigation <- fullTextdf %>%
+  filter(str_detect(text,"FDA|investigation|Boynton"))
+
+torch <-  fullTextdf %>%
+  filter(str_detect(text,"voting"))
+```
+
+----------------------------------------------------------
