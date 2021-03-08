@@ -5,4 +5,4 @@ date: "3/5/2021"
 output: html_document
 ---
 
-for exploratory data analysis
+Exploratory Data Analysis
