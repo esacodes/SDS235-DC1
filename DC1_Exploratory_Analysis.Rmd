@@ -14,7 +14,7 @@ library(readxl)
 phone_log <- read_excel("EditedPhoneLogR.xlsx")
 View(phone_log)
 
-# Filter days with no calss
+# Filter days with no calls
 call_days <- phone_log %>% 
   filter(!is.na(`Number Called`))
 View(call_days)
@@ -33,3 +33,5 @@ View(attorney)
 # All articles
 articles <- read_csv("articlesTextDate.csv")
 View(articles)
+
+filter(articles, grepl('Switzerland',text))
