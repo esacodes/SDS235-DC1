@@ -47,6 +47,9 @@ filter(articles, grepl("Delwin",text))
 ----------------------------------------------------
 # Voter Registry Data
 
+VoterRegistry <- read_xls("VoterRegistry.xls", col_names = TRUE)
+VoterRegistryDF <- data.frame(VoterRegistry)
+
 # Check for any values other than SYNTHETIC DATASET in first column
 (TRUE %in% (VoterRegistryDF[[1]] != "SYNTHETIC DATASET"))
 
