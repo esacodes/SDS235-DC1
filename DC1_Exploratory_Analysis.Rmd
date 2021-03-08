@@ -43,3 +43,45 @@ filter(articles, grepl("2002",date))
 filter(articles, grepl("VonRyker",text))
 
 filter(articles, grepl("Delwin",text))
+
+----------------------------------------------------
+# Voter Registry Data
+
+# Check for any values other than SYNTHETIC DATASET in first column
+(TRUE %in% (VoterRegistryDF[[1]] != "SYNTHETIC DATASET"))
+
+# Delete first column
+VoterRegistryDF <- VoterRegistryDF[,-1]
+
+# Making all first names uppercase
+VoterRegistryDF$FIRST.NAME <- toupper(VoterRegistryDF$FIRST.NAME)
+
+# Making all POB uppercase
+VoterRegistryDF$POB <- toupper(VoterRegistryDF$POB)
+head(VoterRegistryDF)
+
+# Try to fix DOB format
+typeof(VoterRegistryDF$DOB)
+#VoterRegistryDF$DOB <- as.Date(VoterRegistryDF$VOTER.REG.DATE, "%m/%d/%Y %H:%M:%S")
+
+#a <- as.Date(VoterRegistryDF$DOB)
+#b <- as.Date(VoterRegistryDF$DOB,format="%d-%b-%y")
+#a[is.na(a)] <- b[!is.na(b)]
+#head(a, n=8)
+#VoterRegistryDF$DOB <- a
+
+#a <- as.Date(VoterRegistryDF$DOB,origin="1899-12-30")
+#b <- as.Date(VoterRegistryDF$DOB,format="%d-%b-%y", origin="1899-12-30")
+#head(a, n=8)
+#head(b, n=8)
+
+#mdy <- mdy(VoterRegistryDF$DOB)
+#dmy <- dmy(VoterRegistryDF$DOB)
+#mdy[is.na(mdy)] <- dmy[is.na(mdy)]
+
+#VoterRegistryDF$DOB <- parse_date_time(VoterRegistryDF$DOB, orders=c('mdy', 'dmy'))
+
+#VoterRegistryDF$DOB <- as.Date(VoterRegistryDF$DOB, origin="1899-12-30")
+
+typeof(VoterRegistryDF$DOB)
+head(VoterRegistryDF, n=8)
